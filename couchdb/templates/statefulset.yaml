@@ -165,6 +165,10 @@ spec:
 {{- with .Values.affinity }}
       affinity:
 {{ toYaml . | indent 8 }}
+{{- with .Values.topologySpreadConstraints }}
+      topologySpreadConstraints:
+{{ toYaml . | indent 8 }}
+{{- end }}
 {{- end }}
 {{- with .Values.topologySpreadConstraints }}
       topologySpreadConstraints:
