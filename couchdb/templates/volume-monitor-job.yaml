@@ -1,0 +1,28 @@
+# Add doc
+{{- if .Values.volumeMonitorJob.enabled }} 
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: monitor-volumes-size
+spec:
+  schedule: {{ .Values.volumeMonitorJob.schedule }}
+  concurrencyPolicy: {{ .Values.volumeMonitorJob.concurrencyPolicy }}
+  successfulJobsHistoryLimit: {{ .Values.volumeMonitorJob.successfulJobsHistoryLimit }}
+  failedJobsHistoryLimit: {{ .Values.volumeMonitorJob.failedJobsHistoryLimit }}
+  jobTemplate:
+    spec:
+      completions: 1
+      template:
+        spec:
+          containers:
+          - name: couchdb-k8s-stress-tests
+            image: {{ .Values.volumeMonitorJob.image.repository }}:{{ .Values.volumeMonitorJob.image.tag }}
+            args: ["--script", "0"]
+            imagePullPolicy: {{ .Values.volumeMonitorJob.imagePullPolicy }}
+            envFrom:
+            - secretRef:
+                name: couchdb-couchdb
+          restartPolicy: {{ .Values.volumeMonitorJob.restartPolicy }}
+          imagePullSecrets:
+          - name: registry-credentials
+{{- end }}
