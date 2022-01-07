@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: v2
 name: couchdb
 version: 3.5.1
 appVersion: 3.2.1
