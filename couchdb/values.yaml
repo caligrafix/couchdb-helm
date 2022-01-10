@@ -221,3 +221,13 @@ sidecars: {}
   #   volumeMounts:
   #     - name: database-storage
   #       mountPath: /opt/couchdb/data/
+
+
+vpa:
+  enabled: false
+
+volumeMonitorJob:
+  enabled: false
+
+placementConfig:
+  enabled: false

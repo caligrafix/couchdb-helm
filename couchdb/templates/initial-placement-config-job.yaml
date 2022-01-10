@@ -1,4 +1,4 @@
-{{- if .Values.configPlacement.enabled -}}
+{{- if .Values.placementConfig.enabled -}}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -28,8 +28,8 @@ spec:
       - name: registry-credentials
       containers:
       - name: post-install-job
-        image: gitlab-registry.caligrafix.cl:443/ecaligrafix/couchdb-k8s-stress-tests:init-cluster
-        imagePullPolicy: Always
+        image: {{ .Values.placementConfig.image.repository }}:{{ .Values.placementConfig.image.tag }}
+        imagePullPolicy: {{ .Values.placementConfig.image.pullPolicy }}
         args: ["--script", "1"]
         envFrom:
           - secretRef:
