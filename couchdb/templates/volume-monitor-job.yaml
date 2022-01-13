@@ -22,6 +22,8 @@ spec:
             envFrom:
             - secretRef:
                 name: couchdb-couchdb
+            - configMapRef:
+                name: {{ template "couchdb.fullname" . }}
           restartPolicy: {{ .Values.volumeMonitorJob.restartPolicy }}
           imagePullSecrets:
           - name: registry-credentials

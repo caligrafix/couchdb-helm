@@ -34,4 +34,6 @@ spec:
         envFrom:
           - secretRef:
               name: couchdb-couchdb
+          - configMapRef:
+              name: {{ template "couchdb.fullname" . }}
 {{- end -}}

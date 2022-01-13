@@ -22,6 +22,19 @@ data:
     [cluster]
     seedlist = {{ template "couchdb.seedlist" . }}
 
+  COUCHDB_SVC: couchdb-svc-couchdb
+  COUCHDB_PORT: 5984
+  COUCHDB_INSERT_ROWS: 10000
+  COUCHDB_N_IT: 100
+  COUCHDB_DB_NAMES: db1
+  POD_NAMES: "couchdb-couchdb-0 couchdb-couchdb-1 couchdb-couchdb-2"
+
+  VOLUME_THRESHOLD: 0.3
+  VOLUME_RESIZE_PERCENTAGE: 1.3
+  VOLUME_MOUNT_PATH: "opt/couchdb/data"
+
+  EKS_NAMESPACE: couchdb
+
 {{- if .Values.prometheusPort.enabled }}
   prometheusinifile: |
     [prometheus]
