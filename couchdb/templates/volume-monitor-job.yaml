@@ -11,20 +11,28 @@ spec:
   failedJobsHistoryLimit: {{ .Values.volumeMonitorJob.failedJobsHistoryLimit }}
   jobTemplate:
     spec:
-      completions: 1
+      completions: {{ .Values.volumeMonitorJob.completions }}
       template:
         spec:
           containers:
-          - name: couchdb-k8s-stress-tests
+          - name: {{ .Values.volumeMonitorJob.containerName }}
             image: {{ .Values.volumeMonitorJob.image.repository }}:{{ .Values.volumeMonitorJob.image.tag }}
-            args: ["--script", "0"]
+            args: ["--volume-monitor"]
             imagePullPolicy: {{ .Values.volumeMonitorJob.imagePullPolicy }}
             envFrom:
             - secretRef:
                 name: couchdb-couchdb
             - configMapRef:
                 name: {{ template "couchdb.fullname" . }}
+            env:
+              - name: EKS_NAMESPACE
+                value: {{ .Values.volumeMonitorJob.namespace }}
+              - name: VOLUME_THRESHOLD
+                value: {{ .Values.volumeMonitorJob.volumeConfigParams.volumeThreshold | quote }}
+              - name: VOLUME_RESIZE_PERCENTAGE
+                value: {{ .Values.volumeMonitorJob.volumeConfigParams.volumeResizePercentage | quote }}
+              - name: VOLUME_MOUNT_PATH
+                value: {{ .Values.volumeMonitorJob.volumeConfigParams.volumeMountPath }}
+            
           restartPolicy: {{ .Values.volumeMonitorJob.restartPolicy }}
-          imagePullSecrets:
-          - name: registry-credentials
 {{- end }}
