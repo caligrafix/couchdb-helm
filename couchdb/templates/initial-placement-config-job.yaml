@@ -23,17 +23,23 @@ spec:
         app.kubernetes.io/instance: {{ .Release.Name | quote }}
         helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     spec:
-      restartPolicy: Never
-      imagePullSecrets:
-      - name: registry-credentials
+      restartPolicy: {{ .Values.placementConfig.restartPolicy }}
       containers:
-      - name: post-install-job
+      - name: {{ .Values.placementConfig.containerName }}
         image: {{ .Values.placementConfig.image.repository }}:{{ .Values.placementConfig.image.tag }}
         imagePullPolicy: {{ .Values.placementConfig.image.pullPolicy }}
-        args: ["--script", "1"]
+        args: ["--placement-manager"]
         envFrom:
           - secretRef:
               name: couchdb-couchdb
           - configMapRef:
               name: {{ template "couchdb.fullname" . }}
+        env:
+          - name: EKS_NAMESPACE
+            value: {{ .Values.placementConfig.namespace }}
+          - name: COUCHDB_SVC
+            value: {{ .Values.placementConfig.couchdbServiceName }}
+          - name: COUCHDB_PORT
+            value: {{ .Values.placementConfig.couchdbPort | quote }}
+
 {{- end -}}
