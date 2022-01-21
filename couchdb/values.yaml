@@ -225,9 +225,64 @@ sidecars: {}
 
 vpa:
   enabled: false
+  updatePolicy:
+    updateMode: Recreate
+  resourcePolicy:
+    containerPolicies:
+      containerName: '*'
+      minAllowed:
+        cpu: 500m
+        memory: 64Mi
+      maxAllowed:
+        cpu: 1
+        memory: 1Gi
+      controlledResources: |
+        ["cpu", "memory"]
+      controlledValues: RequestsAndLimits
+
+
+### Vertical Pod Autoscaler Values
+vertical-pod-autoscaler:
+  recommender:
+    extraArgs:
+      history-length: 5m
+      history-resolution: 1s
+      cpu-histogram-decay-half-life: 0h5m0s
+      memory-aggregation-interval: 0h5m0s
+      memory-histogram-decay-half-life: 0h5m0s
+      memory-aggregation-interval-count: 8
+      pod-recommendation-min-cpu-millicores: 5
+      pod-recommendation-min-memory-mb: 64
+
 
 volumeMonitorJob:
   enabled: false
+  namespace: couchdb
+  schedule: '"*/30 * * * *"'
+  completions: 1
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  containerName: couchdb-volume-monitor
+  image:
+    repository: caligrafix/couchdb-autoscaler-volume-monitor
+    tag: latest
+  imagePullPolicy: IfNotPresent
+  restartPolicy: Never
+  volumeConfigParams:
+    volumeThreshold: "0.5" # percentage of use 
+    volumeResizePercentage: "1.3" # To scale up 
+    volumeMountPath: "opt/couchdb/data" # Mounted volume path
+
 
 placementConfig:
   enabled: false
+  restartPolicy: Never
+  containerName: placement-manager-job
+  image: 
+    repository: caligrafix/couchdb-autoscaler-placement-manager
+    tag: latest
+    pullPolicy: Always
+  couchdbServiceName: couchdb-svc-couchdb
+  couchdbPort: 5984
+  
