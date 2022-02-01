@@ -23,11 +23,11 @@ spec:
         app.kubernetes.io/instance: {{ .Release.Name | quote }}
         helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     spec:
-      restartPolicy: {{ .Values.placementConfig.restartPolicy }}
+      restartPolicy: OnFailure
       containers:
-      - name: {{ .Values.placementConfig.containerName }}
+      - name: placement-tagging-job
         image: {{ .Values.placementConfig.image.repository }}:{{ .Values.placementConfig.image.tag }}
-        imagePullPolicy: {{ .Values.placementConfig.image.pullPolicy }}
+        imagePullPolicy: Always
         args: ["--placement-manager"]
         envFrom:
           - secretRef:
@@ -35,11 +35,10 @@ spec:
           - configMapRef:
               name: {{ template "couchdb.fullname" . }}
         env:
-          - name: EKS_NAMESPACE
-            value: {{ .Values.placementConfig.namespace }}
+          - name: NAMESPACE
+            value: {{ .Release.Namespace }}
           - name: COUCHDB_SVC
-            value: {{ .Values.placementConfig.couchdbServiceName }}
+            value: {{ template "couchdb.svcname" . }}
           - name: COUCHDB_PORT
-            value: {{ .Values.placementConfig.couchdbPort | quote }}
-
+            value: {{ .Values.service.externalPort | quote }}
 {{- end -}}
