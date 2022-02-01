@@ -267,18 +267,10 @@ vertical-pod-autoscaler:
 
 volumeMonitorJob:
   enabled: false
-  namespace: couchdb
   schedule: '"*/30 * * * *"'
-  completions: 1
-  concurrencyPolicy: Forbid
-  successfulJobsHistoryLimit: 3
-  failedJobsHistoryLimit: 3
-  containerName: couchdb-volume-monitor
   image:
     repository: caligrafix/couchdb-autoscaler-volume-monitor
-    tag: latest
-  imagePullPolicy: IfNotPresent
-  restartPolicy: Never
+    tag: 0.1.0
   volumeConfigParams:
     volumeThreshold: "0.5" # percentage of use 
     volumeResizePercentage: "1.3" # To scale up 

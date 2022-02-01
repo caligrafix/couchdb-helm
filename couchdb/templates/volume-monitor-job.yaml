@@ -1,5 +1,5 @@
 # Add doc
-{{- if .Values.volumeMonitorJob.enabled }} 
+{{- if .Values.volumeMonitorJob.enabled }}
 apiVersion: batch/v1
 kind: CronJob
 metadata:
