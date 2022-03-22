@@ -233,7 +233,7 @@ placementConfig:
   enabled: false
   image:
     repository: caligrafix/couchdb-autoscaler-placement-manager
-    tag: 0.1.0
+    tag: 0.2.0
 
 
 vpa:
@@ -266,6 +266,12 @@ vertical-pod-autoscaler:
       memory-aggregation-interval-count: 8
       pod-recommendation-min-cpu-millicores: 5
       pod-recommendation-min-memory-mb: 64
+      recommendation-margin-fraction: 0.8
+  updater:
+    readinessProbe:
+      initialDelaySeconds: 60
+    livenessProbe:
+      initialDelaySeconds: 60
 
 
 volumeMonitorJob:

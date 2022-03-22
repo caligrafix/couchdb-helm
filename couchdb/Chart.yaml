@@ -21,6 +21,6 @@ maintainers:
 icon: http://couchdb.apache.org/CouchDB-visual-identity/logo/CouchDB-couch-symbol.svg
 dependencies:
   - name: vertical-pod-autoscaler
-    version: "3.6.1"
+    version: "4.0.4"
     repository: "https://cowboysysop.github.io/charts"
     condition: vpa.enabled
