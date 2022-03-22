@@ -239,7 +239,7 @@ placementConfig:
 vpa:
   enabled: false
   updatePolicy:
-    updateMode: Recreate
+    updateMode: Auto
   resourcePolicy:
     containerPolicies:
       containerName: '*'
