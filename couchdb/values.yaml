@@ -266,7 +266,7 @@ vertical-pod-autoscaler:
       memory-aggregation-interval-count: 8
       pod-recommendation-min-cpu-millicores: 5
       pod-recommendation-min-memory-mb: 64
-      recommendation-margin-fraction: 0.8
+      recommendation-margin-fraction: 0.3
   updater:
     readinessProbe:
       initialDelaySeconds: 60
