@@ -3,15 +3,15 @@ entries:
   couchdb:
   - apiVersion: v2
     appVersion: 3.2.1
-    created: "2022-03-22T14:19:06.617025067-03:00"
+    created: "2022-04-07T06:58:55.014351121-04:00"
     dependencies:
     - condition: vpa.enabled
       name: vertical-pod-autoscaler
       repository: https://cowboysysop.github.io/charts
-      version: 4.0.4
+      version: 4.1.0
     description: A database featuring seamless multi-master sync, that scales from
       big data to mobile, with an intuitive HTTP/JSON API and designed for reliability.
-    digest: ff24ebdb2e448d95a595d0d3db2bb58c92492861b1d242ea18ef66ed60e029d7
+    digest: bb62031e8d5c9dd2bcb09dce066705fc6cc61773717cd027385eda55c7599ccb
     home: https://couchdb.apache.org/
     icon: http://couchdb.apache.org/CouchDB-visual-identity/logo/CouchDB-couch-symbol.svg
     keywords:
@@ -448,4 +448,4 @@ entries:
     urls:
     - https://apache.github.io/couchdb-helm/couchdb-2.2.0.tgz
     version: 2.2.0
-generated: "2022-03-22T14:19:06.605157349-03:00"
+generated: "2022-04-07T06:58:55.005715812-04:00"
