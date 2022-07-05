@@ -3,15 +3,44 @@ entries:
   couchdb:
   - apiVersion: v2
     appVersion: 3.2.1
-    created: "2022-04-07T06:58:55.014351121-04:00"
+    created: "2022-07-05T09:44:27.15067408-04:00"
     dependencies:
     - condition: vpa.enabled
       name: vertical-pod-autoscaler
       repository: https://cowboysysop.github.io/charts
-      version: 4.1.0
+      version: 5.1.0
     description: A database featuring seamless multi-master sync, that scales from
       big data to mobile, with an intuitive HTTP/JSON API and designed for reliability.
-    digest: bb62031e8d5c9dd2bcb09dce066705fc6cc61773717cd027385eda55c7599ccb
+    digest: 5d7701ce2c97243496b327789bf261c1fb96db13e60f14f76e1492d978f3a721
+    home: https://couchdb.apache.org/
+    icon: http://couchdb.apache.org/CouchDB-visual-identity/logo/CouchDB-couch-symbol.svg
+    keywords:
+    - couchdb
+    - database
+    - nosql
+    maintainers:
+    - email: kocolosk@apache.org
+      name: kocolosk
+    - email: willholley@apache.org
+      name: willholley
+    name: couchdb
+    sources:
+    - https://github.com/apache/couchdb-helm
+    - https://github.com/apache/couchdb-docker
+    urls:
+    - https://caligrafix.github.io/couchdb-helm/couchdb-3.6.2.tgz
+    version: 3.6.2
+  - apiVersion: v2
+    appVersion: 3.2.1
+    created: "2022-07-05T09:43:51.271484086-04:00"
+    dependencies:
+    - condition: vpa.enabled
+      name: vertical-pod-autoscaler
+      repository: https://cowboysysop.github.io/charts
+      version: 5.1.0
+    description: A database featuring seamless multi-master sync, that scales from
+      big data to mobile, with an intuitive HTTP/JSON API and designed for reliability.
+    digest: e33729b71f139dbc93667c66f2a2304b240962daf1d1f13556e1c52491be4ede
     home: https://couchdb.apache.org/
     icon: http://couchdb.apache.org/CouchDB-visual-identity/logo/CouchDB-couch-symbol.svg
     keywords:
@@ -448,4 +477,4 @@ entries:
     urls:
     - https://apache.github.io/couchdb-helm/couchdb-2.2.0.tgz
     version: 2.2.0
-generated: "2022-04-07T06:58:55.005715812-04:00"
+generated: "2022-07-05T09:44:27.143253896-04:00"

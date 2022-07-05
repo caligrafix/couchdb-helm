@@ -1,6 +1,6 @@
 apiVersion: v2
 name: couchdb
-version: 3.6.1
+version: 3.6.2
 appVersion: 3.2.1
 description: A database featuring seamless multi-master sync, that scales from
   big data to mobile, with an intuitive HTTP/JSON API and designed for
@@ -21,6 +21,6 @@ maintainers:
 icon: http://couchdb.apache.org/CouchDB-visual-identity/logo/CouchDB-couch-symbol.svg
 dependencies:
   - name: vertical-pod-autoscaler
-    version: "4.1.0"
+    version: "5.1.0"
     repository: "https://cowboysysop.github.io/charts"
     condition: vpa.enabled
