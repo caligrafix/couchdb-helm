@@ -1,2 +1,14 @@
 
 couchdb/custom-values.yaml
+
+couchdb/test-values.yaml
+
+autoscaler/
+
+couchdb/charts/vertical-pod-autoscaler-5.1.0.tgz
+
+couchdb/templates/nodes-admin.yaml
+
+couchdb/templates/pods-admin.yaml
+
+couchdb/templates/pvcs-admin.yaml
