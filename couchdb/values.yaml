@@ -256,7 +256,34 @@ vpa:
 
 ### Vertical Pod Autoscaler Values
 vertical-pod-autoscaler:
+  admissionController:
+    resources:
+      requests:
+        cpu: 50m
+        memory: 64Mi
+    readinessProbe:
+      initialDelaySeconds: 60
+      periodSeconds: 20
+      timeoutSeconds: 20
+    livenessProbe:
+      initialDelaySeconds: 60
+      periodSeconds: 20
+      timeoutSeconds: 20
+    extraArgs:
+      register-webhook: true
   recommender:
+    resources:
+      requests:
+        cpu: 50m
+        memory: 64Mi
+    readinessProbe:
+      initialDelaySeconds: 60
+      periodSeconds: 20
+      timeoutSeconds: 20
+    livenessProbe:
+      initialDelaySeconds: 60
+      periodSeconds: 20
+      timeoutSeconds: 20
     extraArgs:
       history-length: 5m
       history-resolution: 1s
@@ -268,12 +295,19 @@ vertical-pod-autoscaler:
       pod-recommendation-min-memory-mb: 64
       recommendation-margin-fraction: 0.3
   updater:
+    resources:
+      requests:
+        cpu: 50m
+        memory: 64Mi
     readinessProbe:
       initialDelaySeconds: 60
+      periodSeconds: 20
+      timeoutSeconds: 20
     livenessProbe:
       initialDelaySeconds: 60
-
-
+      periodSeconds: 20
+      timeoutSeconds: 20
+    
 volumeMonitorJob:
   enabled: false
   schedule: '"*/30 * * * *"'
