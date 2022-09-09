@@ -25,7 +25,7 @@ spec:
 {{ toYaml .Values.annotations | indent 8 }}
 {{- end }}
     spec:
-      terminationGracePeriodSeconds: 60
+      terminationGracePeriodSeconds: 120
       {{- if .Values.schedulerName }}
       schedulerName: "{{ .Values.schedulerName }}"
       {{- end }}
@@ -152,7 +152,7 @@ spec:
           lifecycle:
             preStop:
               exec:
-                command: ["sleep", "60"]
+                command: ["sleep", "120"]
 {{- if .Values.enableSearch }}
         - name: clouseau
           image: "{{ .Values.searchImage.repository }}:{{ .Values.searchImage.tag }}"
