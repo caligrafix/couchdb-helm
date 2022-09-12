@@ -25,7 +25,9 @@ spec:
 {{ toYaml .Values.annotations | indent 8 }}
 {{- end }}
     spec:
-      terminationGracePeriodSeconds: 120
+      {{- if .Values.terminationGracePeriodSeconds }}
+      terminationGracePeriodSeconds: "{{ .Values.terminationGracePeriodSeconds}}"
+      {{- end }}
       {{- if .Values.schedulerName }}
       schedulerName: "{{ .Values.schedulerName }}"
       {{- end }}
@@ -149,10 +151,12 @@ spec:
 {{- end }}
           - name: database-storage
             mountPath: /opt/couchdb/data
+{{- if .Values.lifecyclePreStopHook }}
           lifecycle:
             preStop:
               exec:
-                command: ["sleep", "120"]
+                command: ["sleep", "{{ .Values.lifecyclePreStopHook.sleepSeconds }}"]
+{{- end }}
 {{- if .Values.enableSearch }}
         - name: clouseau
           image: "{{ .Values.searchImage.repository }}:{{ .Values.searchImage.tag }}"
