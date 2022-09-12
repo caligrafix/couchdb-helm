@@ -3,7 +3,7 @@ entries:
   couchdb:
   - apiVersion: v2
     appVersion: 3.2.1
-    created: "2022-09-08T21:15:30.580087855-04:00"
+    created: "2022-09-12T10:14:24.175362888-03:00"
     dependencies:
     - condition: vpa.enabled
       name: vertical-pod-autoscaler
@@ -11,7 +11,7 @@ entries:
       version: 5.1.0
     description: A database featuring seamless multi-master sync, that scales from
       big data to mobile, with an intuitive HTTP/JSON API and designed for reliability.
-    digest: 18849c1729a8cc3385b876777ec06d10c1ae0d8aeafb66ec4518ff4881461323
+    digest: 5a9076bb36eadeaf6f3f09af39ace40d998e5d04b31cb6683e37b567f7fd0353
     home: https://couchdb.apache.org/
     icon: http://couchdb.apache.org/CouchDB-visual-identity/logo/CouchDB-couch-symbol.svg
     keywords:
@@ -506,4 +506,4 @@ entries:
     urls:
     - https://apache.github.io/couchdb-helm/couchdb-2.2.0.tgz
     version: 2.2.0
-generated: "2022-09-08T21:15:30.565476238-04:00"
+generated: "2022-09-12T10:14:24.164021689-03:00"

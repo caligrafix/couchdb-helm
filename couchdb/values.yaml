@@ -320,3 +320,9 @@ volumeMonitorJob:
     volumeThreshold: "0.5" # percentage of use 
     volumeResizePercentage: "1.3" # To scale up 
     volumeMountPath: "opt/couchdb/data" # Mounted volume path
+
+
+# terminationGracePeriodSeconds: 30
+
+# lifecyclePreStopHook:
+#   sleepSeconds: 30
