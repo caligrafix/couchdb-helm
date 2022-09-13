@@ -309,7 +309,7 @@ vertical-pod-autoscaler:
       periodSeconds: 20
       timeoutSeconds: 20
     extraArgs:
-      eviction-tolerance: 0.25
+      eviction-tolerance: 0.5
     
 volumeMonitorJob:
   enabled: false
