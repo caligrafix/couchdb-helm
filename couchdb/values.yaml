@@ -167,7 +167,8 @@ erlangFlags:
 ## by a ConfigMap object.
 ## ref: http://docs.couchdb.org/en/latest/config/index.html
 couchdbConfig:
-  # couchdb:
+  couchdb:
+    uuid: gzhkNQVsukacZsIp
   #  uuid: decafbaddecafbaddecafbaddecafbad # Unique identifier for this CouchDB server instance
   # cluster:
   #   q: 8 # Create 8 shards for each database
@@ -322,7 +323,7 @@ volumeMonitorJob:
     volumeMountPath: "opt/couchdb/data" # Mounted volume path
 
 
-# terminationGracePeriodSeconds: 30
+terminationGracePeriodSeconds: 30
 
 # lifecyclePreStopHook:
 #   sleepSeconds: 30
