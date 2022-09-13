@@ -26,7 +26,7 @@ spec:
 {{- end }}
     spec:
       {{- if .Values.terminationGracePeriodSeconds }}
-      terminationGracePeriodSeconds: "{{ .Values.terminationGracePeriodSeconds}}"
+      terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds}}
       {{- end }}
       {{- if .Values.schedulerName }}
       schedulerName: "{{ .Values.schedulerName }}"
